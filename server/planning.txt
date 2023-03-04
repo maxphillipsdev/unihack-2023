@@ -1,0 +1,22 @@
+
+      email + mobile
+user --------------> [app]  ---> [login link]
+
+
+chunks:
+ - auth engine (email + phone verification thingo)
+    - magic auth
+
+ - tag management routes
+    - needs auth
+
+ - group management routes
+    - needs auth
+
+ - scraping layer:
+    - fetching platform specific data
+
+notes:
+ - for the sake of the hackathon: 
+    - no interfacing with FB api
+    - we can just return mock data for specific messenger GCs

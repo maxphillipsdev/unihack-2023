@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: 18.x
           cache: "pnpm"
+          cache-dependency-path: "client/pnpm-lock.yaml"
 
       - run: pnpm install --frozen-lockfile
       - run: pnpm run lint

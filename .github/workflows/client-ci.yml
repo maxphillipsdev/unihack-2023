@@ -1,0 +1,25 @@
+name: Client CI
+on:
+  push:
+    branches:
+      - "**"
+defaults:
+  run:
+    working-directory: client/
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+          cache: "pnpm"
+          cache-dependency-path: "client/pnpm-lock.yaml"
+
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run lint

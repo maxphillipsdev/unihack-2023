@@ -10,7 +10,6 @@ type University = {
 // models a tag + metadata that corresponds to a course
 type CourseTag = {
     type: "course";
-    offeringFaculty: string; // no actual constraints as of yet (kinda overkill for hackathon tbh)
     courseCode: string;
     courseDescription?: string;
 }

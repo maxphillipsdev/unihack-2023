@@ -6,20 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url = env("DATABASE_URL")
   relationMode = "prisma"
-}
-
-model Tag {
-  tagId               Int @id @default(autoincrement())
-
-  unversity           String
-  appliedToChats      Chat[]
-
-  // tag metadata
-  tagName             String @unique
-  tagDescription      String
 }
 
 model Chat {
@@ -32,7 +21,7 @@ model Chat {
   totalMembers        Int
   capacity            Int
   
-  tags                Tag[]
+  tags                String[]
 
   owner               User @relation(fields: [ownerId], references: [userId])
   ownerId             Int @unique

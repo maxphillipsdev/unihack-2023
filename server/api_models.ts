@@ -2,7 +2,10 @@ import { NumberUpto } from "./sussy";
 
 // type modelling for the domain
 
-type University = "unsw" | "anu" | "usyd";
+type University = { 
+    uniName: "unsw" | "anu" | "usyd";
+    // ...
+}
 
 // models a tag + metadata that corresponds to a course
 type CourseTag = {
@@ -22,7 +25,7 @@ type ClubTag = {
 type Tag = {
     data: CourseTag | ClubTag;
     tagOwnerUserId: string; // maps to user.user_id
-    relevantUniversity: University; // todo: make name not bad
+    relevantUniversity: string; // maps to University.uniName
     colour: {
         r: NumberUpto<255>;
         g: NumberUpto<255>;
@@ -41,7 +44,7 @@ type Group = {
     totalMembers: number;
     capacity: number | "inf";
     tags: Tag[];
-    university: University;
+    university: string; // maps to University.uniName
 }
 
 

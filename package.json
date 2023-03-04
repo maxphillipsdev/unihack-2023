@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port $PORT",
     "build": "vite build",
     "lint": "tsc",
     "format": "prettier --write src/",
@@ -19,6 +19,7 @@
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@vercel/node": "^2.9.10",
     "@vitejs/plugin-react-swc": "^3.0.0",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",

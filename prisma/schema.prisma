@@ -11,6 +11,41 @@ datasource db {
   relationMode = "prisma"
 }
 
+model Tag {
+  tagId               Int @id @default(autoincrement())
+
+  unversity           String
+  appliedToChats      Chat[]
+
+  // tag metadata
+  tagName             String @unique
+  tagDescription      String
+}
+
 model Chat {
-  id        Int      @id @default(autoincrement())
+  chatId              Int @id @default(autoincrement())
+  university          String
+  
+  platform            String
+
+  image               String
+  totalMembers        Int
+  capacity            Int
+  
+  tags                Tag[]
+
+  owner               User @relation(fields: [ownerId], references: [userId])
+  ownerId             Int @unique
+}
+
+model User {
+  userId        Int @id @default(autoincrement())
+  firstName     String
+  lastName      String
+
+  email         String @unique
+  university    String
+
+  profileImage  String?
+  chatsOwned    Chat[]
 }

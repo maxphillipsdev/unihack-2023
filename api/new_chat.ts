@@ -4,6 +4,8 @@ const prisma = new PrismaClient();
 
 type requestBody = {
   university: string;
+  name: string;
+  description: string;
   loginLink: string;
   image: string;
   tags: string[];
@@ -14,6 +16,8 @@ const isValidRequest = (o: any) : o is requestBody => {
   if (typeof o.university !== "string") return false;
   if (typeof o.loginLink !== "string") return false;
   if (typeof o.image !== "string") return false;
+  if (typeof o.name !== "string") return false;
+  if (typeof o.description !== "string") return false;
   if (!Array.isArray(o.tags)) return false;
   if (!o.tags.every((tag) => typeof tag === "string")) return false;
   return true;
@@ -55,6 +59,9 @@ export default async function handler(
       image: request.body.image,
       totalMembers: 0,
       capacity: 1000,
+
+      name: request.body.name,
+      description: request.body.description,
       
       tags: request.body.tags
     }
